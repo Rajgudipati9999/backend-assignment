@@ -6,8 +6,7 @@ exports.createTask = async (req, res) => {
   if (error) return res.status(400).json({ message: error.details[0].message });
 
   const task = await Task.create({
-    ...req.body,
-    createdBy: req.user.id
+    ...req.body
   });
 
   res.status(201).json(task);
