@@ -4,16 +4,16 @@ const { taskSchema } = require("../utils/validation");
 exports.createTask = async (req, res) => {
   const { error } = taskSchema.validate(req.body);
   if (error) return res.status(400).json({ message: error.details[0].message });
-
+  console.log("REQ.USER:", req.user);
   const task = await Task.create({
-    ...req.body
+    ...req.body,
+    createdBy: req.user.userId
   });
-
   res.status(201).json(task);
 };
 
 exports.getTasks = async (req, res) => {
-  const tasks = await Task.find({ createdBy: req.user.id });
+  const tasks = await Task.find({ createdBy: req.user.userId});
   res.json(tasks);
 };
 

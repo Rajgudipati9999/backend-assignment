@@ -10,7 +10,7 @@ const {
 
 router.use(authMiddleware);
 
-router.post("/", createTask);
+router.post("/",createTask);
 router.get("/", getTasks);
 router.put("/:id", updateTask);
 router.delete("/:id", deleteTask);

@@ -12,6 +12,5 @@ exports.loginSchema = Joi.object({
 });
 
 exports.taskSchema = Joi.object({
-  title: Joi.string().required(),
-  description: Joi.string().allow("")
+  title: Joi.string().required()
 });
